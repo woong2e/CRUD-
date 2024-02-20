@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import CreatePost from './CreatePost';
+import Click from './Click';
+import Head from './Head';
+import Contents from './Contents';
+import { useState } from 'react';
 
 function App() {
+  const [state, setState] = useState("default");
+  var nextState;
+  const onChange = (nextState) => {
+    setState(nextState);
+  }
+
+
+  // const [list, setList] = useState();
+  // const [title, contents] = list;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Head />
+      <div className="Board">
+        <div className="list">글 목록<hr/></div>
+
+        <div className="contents">글 내용<hr/></div>
+        <Contents state={state} onChange={onChange} nextState={nextState}/>
+      </div>
+      <footer className="footer">
+        .
+      </footer>
     </div>
   );
 }
